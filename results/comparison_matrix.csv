@@ -1,0 +1,33 @@
+Metric Category,Specific Subsystem Metric,AWS Graviton4 (c8g.large),AWS Intel Xeon 6 (c8i.large),Delta / Architectural Winner
+Hardware,Architecture & ISA,ARM64 (Neoverse-V2),x86_64 (Intel Xeon 6975P-C),Multi-Arch Verified
+Hardware,CPU Virtual Cores (vCPUs),2 vCPUs @ 2.8 GHz,2 vCPUs @ 2.7 GHz,Equivalent Sizing
+Hardware,Instruction Set Extensions,"SVE, SVE2, ASIMD, AES, SHA3, BTI","AVX-512, AMX-TILE, VAES, GFNI",Hardware Feature Parity
+Hardware,gp3 Direct Storage Write,1.09941 s,1.11014 s,Tied (~242-244 MB/s)
+Vector 1,IMDSv2 Hop-Limit Enforced,YES (Hop Limit 2),YES (Hop Limit 2),Both Passed
+Vector 1,HTTP /health Response,200 OK (Healthy),200 OK (Healthy),Sub-millisecond
+Vector 2 (Mnemon),FastCDC Gear Hash Throughput,2266.77 MB/s,1580.80 MB/s,Graviton4 (+43.4% faster)
+Vector 2 (Thanaton),Sabre Snapshot Restore Bandwidth,10.41 GB/s,5.13 GB/s,Graviton4 (+103% faster memory)
+Vector 2 (Thanaton),Sabre Restore Latency (32MB),3.003 ms,6.098 ms,Graviton4 (2x lower latency)
+Vector 2 (Eschaton),Jiagu Pre-Decision Routing Latency,28.29 ns/route,19.09 ns/route,Intel Xeon 6 (32.5% faster routing)
+Vector 2 (Eschaton),Jiagu Pre-Decision Routing RPS,"35,352,178 routes/s","52,392,888 routes/s",Intel Xeon 6 (52.4M vs 35.4M routes/s)
+Vector 2 (Thanaton),Jiagu Sub-Millisecond Thaw Latency,0.255 µs,0.211 µs,Intel Xeon 6 (0.211 µs vs 0.255 µs)
+Vector 2 (Acheron),PeeR Preemptible eBPF Throughput,"937,612 pps","1,103,055 pps",Intel Xeon 6 (1.10M vs 0.94M pps)
+Vector 2 (Acheron),PeeR Packet Drop Rate,0.00% (Zero Drops),0.00% (Zero Drops),Flawless Preemption
+Vector 2 (Hyperion),µslice Sub-Core Pacing Overhead,104.29 ns/op,65.14 ns/op,Intel Xeon 6 (65.1ns vs 104.3ns)
+Vector 2 (Hyperion),µslice CFS Throttling Cliffs,0 Cliffs (100% Smooth),0 Cliffs (100% Smooth),Zero CFS latency spikes
+Vector 2 (Kronos),Chronofault VMX Clock Drift,0.00 ns (Exact Determinism),0.00 ns (Exact Determinism),Zero Clock Drift on Both
+Vector 2 (Aletheia),Tight 100k Evaluation Loop,94.86 ms (1.05M ops/s),46.70 ms (2.14M ops/s),Intel Xeon 6 (+103% faster execution)
+Vector 2 (Aletheia),Symbolic Equivalence AST Recursion,16.87 µs,21.48 µs,Graviton4 (+27.3% faster AST reduction)
+Vector 2 (Aletheia),SpecFuzz 100k Vector Synthesis,10.62 ms (9413 v/ms),10.84 ms (9226 v/ms),Graviton4 (+2.0% throughput win)
+Vector 3,"50,000 Request Saturation RPS","62,333.80 RPS","74,066.83 RPS",Intel Xeon 6 (+18.8% higher RPS)
+Vector 3,"50,000 Request Duration",0.802 s,0.675 s,Intel Xeon 6 (0.675s vs 0.802s)
+Vector 3,Mean Request Latency,1.604 ms,1.350 ms,Intel Xeon 6 (1.35ms vs 1.60ms)
+Vector 3,p99 Tail Latency,4 ms,4 ms,Tied (4 ms p99)
+Vector 3,Noisy-Neighbor RPS (4x Spin Threads),"22,851.92 RPS","22,158.90 RPS",Graviton4 (+3.1% higher RPS under thrash)
+Vector 3,Noisy-Neighbor p99 Latency,12 ms,13 ms,Graviton4 (12ms vs 13ms)
+Vector 4,IMDSv2 Tokenless SSRF Attack,BLOCKED (HTTP 401),BLOCKED (HTTP 401),Zero SSRF Breach
+Vector 4,Cross-Tenant Memory Scraping (/proc/mem),BLOCKED (Permission Denied),BLOCKED (Permission Denied),Zero Memory Exposure
+Vector 4,Anti-Debugger Ptrace Attachment,BLOCKED (Operation Not Permitted),BLOCKED (Operation Not Permitted),Anti-Debug Shield Active
+Vector 4,Binary Single-Byte Tamper Detection,DETECTED (Seal Invalidated),DETECTED (Seal Invalidated),Anti-Crack Integrity Preserved
+Vector 4,Multi-Tenant Lease Isolation,PASSED (0 Bytes Leaked),PASSED (0 Bytes Leaked),Defense-in-Depth Guaranteed
+Vector 4,Split-Control Brain Scrub (explicit_bzero),PASSED (Zeroed in RAM),PASSED (Zeroed in RAM),Don't Ship the Brain Verified

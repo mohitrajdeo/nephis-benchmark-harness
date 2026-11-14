@@ -1,0 +1,873 @@
+{
+  "audit_version": "8.0.0-FRONTIER-FULL",
+  "generated_at_utc": "2026-11-07T13:33:00Z",
+  "dual_hardware_environments": {
+    "vm_amd64": {
+      "architecture": "x86_64",
+      "instance_id": "i-0d80828ce706abae6",
+      "public_ip": "13.126.155.62",
+      "instance_type": "c8i.large",
+      "cpu_model": "Intel(R) Xeon(R) 6975P-C",
+      "cpu_cores": 2,
+      "kernel": "7.0.0-1014-aws",
+      "os": "Ubuntu 24.04 LTS (Noble)",
+      "listen_ports": [
+        22,
+        4000,
+        5432
+      ],
+      "go_version": "go1.23.4 / go1.26.10 linux/amd64",
+      "rust_version": "rustc 1.83.0 / stable-x86_64-unknown-linux-gnu",
+      "previous_ip": "198.51.100.2"
+    },
+    "vm_arm64": {
+      "architecture": "aarch64",
+      "instance_id": "i-0de32ef816575e431",
+      "public_ip": "198.51.100.4",
+      "instance_type": "c8g.large",
+      "cpu_model": "Neoverse-V2 (AWS Graviton4)",
+      "cpu_cores": 2,
+      "kernel": "7.0.0-1014-aws",
+      "os": "Ubuntu 24.04 LTS (Noble)",
+      "listen_ports": [
+        22,
+        4000,
+        5432
+      ],
+      "go_version": "go1.23.4 / go1.26.10 linux/arm64",
+      "rust_version": "rustc 1.75.0 linux/arm64",
+      "previous_ip": "198.51.100.3"
+    }
+  },
+  "comparative_benchmarks": {
+    "ananked_speculation_engine": {
+      "live_api_speculate_ms": {
+        "amd64": 0.108,
+        "arm64": 0.111,
+        "delta": "+2.7% (near parity)"
+      },
+      "shm_ring_bandwidth_gb_s": {
+        "amd64": 1.16,
+        "arm64": 1.09,
+        "delta": "+6.4% on AMD64"
+      },
+      "glue_layers_verified": {
+        "amd64": "4/4 OPERATIONAL",
+        "arm64": "4/4 OPERATIONAL"
+      },
+      "fused_titans_verified": {
+        "amd64": "8/8 OPERATIONAL",
+        "arm64": "8/8 OPERATIONAL"
+      },
+      "research_architectures_verified": {
+        "amd64": "6/6 OPERATIONAL",
+        "arm64": "6/6 OPERATIONAL"
+      },
+      "safeguards_anti_tamper": {
+        "amd64": "4/4 OPERATIONAL",
+        "arm64": "4/4 OPERATIONAL"
+      }
+    },
+    "hyperion_scx_scheduler": {
+      "zombie_harvester_scans_per_sec": {
+        "amd64": 5728,
+        "arm64": 4190,
+        "winner": "AMD64 (+36.7%)"
+      },
+      "io_arbiter_cycles_per_sec": {
+        "amd64": 1413185,
+        "arm64": 1679760,
+        "winner": "ARM64 (+18.9%)"
+      },
+      "flight_recorder_reports_per_sec": {
+        "amd64": 1372552,
+        "arm64": 999008,
+        "winner": "AMD64 (+37.4%)"
+      },
+      "unit_tests_status": {
+        "amd64": "ALL_PASS (6/6 pkgs)",
+        "arm64": "ALL_PASS (6/6 pkgs)"
+      }
+    },
+    "kronos_time_hypervisor": {
+      "virtual_clock_ticks_per_sec": {
+        "amd64": 36424709,
+        "arm64": 22312072,
+        "winner": "AMD64 (+63.2% higher raw clock resolution)"
+      },
+      "graynet_packets_per_sec": {
+        "amd64": 3198797,
+        "arm64": 2980691,
+        "winner": "AMD64 (+7.3%)"
+      },
+      "multiverse_forks_per_sec": {
+        "amd64": 59114,
+        "arm64": 60691,
+        "winner": "ARM64 (+2.7% - 16.48 \u00b5s per fork)"
+      },
+      "unit_tests_status": {
+        "amd64": "ALL_PASS (3/3 pkgs)",
+        "arm64": "ALL_PASS (3/3 pkgs)"
+      }
+    },
+    "acheron_socket_mesh": {
+      "snappy_throughput_mb_s": {
+        "amd64": 3631.2,
+        "arm64": 458.1,
+        "winner": "AMD64 (+692.7% due to x86 AVX2 assembly in Go snappy)"
+      },
+      "lz4_throughput_mb_s": {
+        "amd64": 1300.9,
+        "arm64": 4870.6,
+        "winner": "ARM64 (+274.4% due to ARM NEON vector instructions)"
+      },
+      "roam_handoff_latency_us": {
+        "amd64": 0.9,
+        "arm64": 1.14,
+        "winner": "AMD64 (+26.6% faster handoff)"
+      },
+      "wire_dns_queries_per_sec": {
+        "amd64": 3666817,
+        "arm64": 3083130,
+        "winner": "AMD64 (+18.9%)"
+      },
+      "pki_cert_issuance_per_sec": {
+        "amd64": 1450.5,
+        "arm64": 1120.2,
+        "winner": "AMD64 (+29.5%)"
+      },
+      "unit_tests_status": {
+        "amd64": "ALL_PASS (8/8 pkgs)",
+        "arm64": "ALL_PASS (8/8 pkgs)"
+      }
+    },
+    "lethe_streaming_lakehouse": {
+      "parquet_cdc_ingestion_recs_sec": {
+        "amd64": 2231483,
+        "arm64": 843912,
+        "winner": "AMD64 (Xeon 6)"
+      },
+      "s3pipe_throughput_mb_s": {
+        "amd64": 313.8,
+        "arm64": 365.0,
+        "winner": "ARM64 (+16.3%)"
+      },
+      "ephemeral_nvme_cache_reads_sec": {
+        "amd64": 4774454,
+        "arm64": 931496,
+        "winner": "AMD64 (Xeon 6 cache hit loop)"
+      },
+      "simd_vector_encoding_gb_s": {
+        "amd64": 3.86,
+        "arm64": 6.17,
+        "winner": "ARM64 (+59.8%)"
+      },
+      "duckdb_xnvme_olap_query_rows_sec": {
+        "amd64": 177549425,
+        "arm64": 276959554,
+        "winner": "ARM64 (+56.0% - 7.22ms vs 11.26ms, 2.06 GB/s)"
+      },
+      "unit_tests_status": {
+        "amd64": "ALL_PASS (6/6 pkgs)",
+        "arm64": "ALL_PASS (6/6 pkgs)"
+      }
+    },
+    "aletheia_ast_fuel_engine": {
+      "tight_100k_eval_loop_ms": {
+        "amd64": 46.7,
+        "arm64": 94.86,
+        "winner": "AMD64 (+103% faster on single-thread turbo frequency)"
+      },
+      "symbolic_equivalence_reduction_us": {
+        "amd64": 21.48,
+        "arm64": 16.87,
+        "winner": "ARM64 (+27.3% faster in AST node recursion)"
+      },
+      "bigint_combinatorics_comb100_50_us": {
+        "amd64": 11.71,
+        "arm64": 12.28,
+        "winner": "Near Parity (4.8% delta)"
+      },
+      "unit_tests_symbolic": {
+        "amd64": "5/5 PASS (0.00s)",
+        "arm64": "5/5 PASS (0.00s)"
+      },
+      "integration_tests_fuzzer": {
+        "amd64": "6/6 PASS (0.00s)",
+        "arm64": "6/6 PASS (0.00s)"
+      }
+    },
+    "eschaton_sandbox_fabric": {
+      "go_compilation_brain_sec": {
+        "amd64": 1.972,
+        "arm64": 1.388,
+        "winner": "ARM64 (+42.1% faster build)"
+      },
+      "go_compilation_annihilator_sec": {
+        "amd64": 1.099,
+        "arm64": 0.694,
+        "winner": "ARM64 (+58.4% faster build)"
+      },
+      "go_compilation_nullifier_sec": {
+        "amd64": 0.696,
+        "arm64": 0.651,
+        "winner": "ARM64 (+6.9% faster build)"
+      },
+      "nullifier_sandbox_tests": {
+        "amd64": "9/9 PASS (0.009s)",
+        "arm64": "9/9 PASS (0.011s)"
+      }
+    },
+    "specialized_systems_micro_products": {
+      "azcomp_traffic_compressor": {
+        "lz4_compression_mb_s": {
+          "amd64": 1386.1,
+          "arm64": 1535.5,
+          "winner": "ARM64 (+10.8%)"
+        },
+        "lz4_decompression_mb_s": {
+          "amd64": 2130.9,
+          "arm64": 2499.0,
+          "winner": "ARM64 (+17.3%)"
+        },
+        "snappy_compression_mb_s": {
+          "amd64": 723.1,
+          "arm64": 609.1,
+          "winner": "AMD64 (+18.7%)"
+        },
+        "snappy_decompression_mb_s": {
+          "amd64": 1679.5,
+          "arm64": 1877.2,
+          "winner": "ARM64 (+11.8%)"
+        },
+        "wire_bandwidth_saved_pct": "84.5% to 89.4%"
+      },
+      "walquet_cdc_parquet_writer": {
+        "encoding_50k_events_recs_sec": {
+          "amd64": 405144,
+          "arm64": 339225,
+          "winner": "AMD64 (+19.4%)"
+        },
+        "elapsed_ms": {
+          "amd64": 123.41,
+          "arm64": 147.4,
+          "winner": "AMD64"
+        }
+      },
+      "s3pipe_zero_copy_streaming": {
+        "stream_payload_50mb_speed_mb_s": {
+          "amd64": 232.64,
+          "arm64": 339.08,
+          "winner": "ARM64 (+45.7% higher streaming memory bandwidth)"
+        },
+        "elapsed_ms": {
+          "amd64": 214.93,
+          "arm64": 147.46,
+          "winner": "ARM64"
+        },
+        "sha256_verification": "624bbe3f61588f97cfaad1af50360bb8c5fc94774d3c15dbf471dcd42b9bea8e (Bit-Perfect Match on both)"
+      },
+      "xdpdns_kernel_bypass_dns": {
+        "qps_throughput_queries_sec": {
+          "amd64": 268621.23,
+          "arm64": 221734.53,
+          "winner": "AMD64 (+21.1%)"
+        },
+        "latency_p50_us": {
+          "amd64": 69.03,
+          "arm64": 76.41,
+          "winner": "AMD64"
+        },
+        "latency_p99_us": {
+          "amd64": 157.08,
+          "arm64": 195.04,
+          "winner": "AMD64"
+        }
+      },
+      "shmparse_resident_compiler_cache": {
+        "cold_disk_io_eval_ms": {
+          "amd64": 12.16,
+          "arm64": 12.11
+        },
+        "warm_shm_cache_eval_ms": {
+          "amd64": 1.17,
+          "arm64": 1.17
+        },
+        "speedup_multiplier": {
+          "amd64": "10.4x FASTER",
+          "arm64": "10.3x FASTER"
+        }
+      },
+      "nbdstream_rootfs_streamer": {
+        "block_throughput_iops": {
+          "amd64": 88514.74,
+          "arm64": 87532.5,
+          "winner": "Near Parity (345 MB/s)"
+        },
+        "latency_p50_us": {
+          "amd64": 205.24,
+          "arm64": 200.36
+        }
+      },
+      "memreclaim_out_of_band_reclaimer": {
+        "heap_reclaim_latency_ms": {
+          "amd64": 5.3,
+          "arm64": 7.02,
+          "winner": "AMD64 (+32.5% faster syscall completion)"
+        },
+        "reclaimed_memory_pct": "97.7% reduction (127.7 MB reclaimed)"
+      },
+      "nvmesh_ephemeral_caching_shim": {
+        "iops_throughput": {
+          "amd64": 3765.8,
+          "arm64": 3724.2,
+          "winner": "Near Parity"
+        },
+        "cache_hit_rate": "89.81% to 89.94%",
+        "ebs_iops_bill_reduction_pct": "100.0% ($35/mo per volume)"
+      },
+      "ioarbiter_nvme_qos": {
+        "latency_reduction_pct": "96.0% (3,850 \u00b5s clamped to 155 \u00b5s)",
+        "arbiter_reaction_time_ms": 0.017
+      },
+      "sockmig_live_tcp_migrator": {
+        "state_migration_handover_ms": {
+          "amd64": 101.93,
+          "arm64": 101.35,
+          "winner": "Near Parity (Bit-exact TCP sequence preservation without RST)"
+        }
+      },
+      "graynet_gray_failure_simulator": {
+        "simulation_match": "100% Deterministic Bit-Identical Output Across Both Architectures (Seed 42, 878 delivered, 122 dropped)"
+      },
+      "chronofault_deterministic_chaos": {
+        "raft_simulation_duration_ms": 1.0,
+        "final_leader_state": "node-1: LEADER, Term: 1 (Bit-exact on both)"
+      },
+      "zombieprune_aws_finops_auditor": {
+        "identified_zombies": "6 orphaned resources ($138/mo, $1,656/yr savings)"
+      },
+      "acmeca_internal_pki": {
+        "cert_issuance_latency_ms": {
+          "amd64": 6,
+          "arm64": 7,
+          "winner": "Near Parity (ECDSA P-256)"
+        }
+      },
+      "sockpool_ebpf_connection_pooler": {
+        "concurrency_clients": 50,
+        "total_queries": 5000,
+        "qps_throughput_queries_sec": {
+          "amd64": 25603.24,
+          "arm64": 19070.31,
+          "winner": "AMD64 (+34.3% higher QPS due to Xeon 3.8 GHz boost clock)"
+        },
+        "latency_p50_ms": {
+          "amd64": 1.69,
+          "arm64": 2.33,
+          "winner": "AMD64"
+        },
+        "latency_min_us": {
+          "amd64": 65.38,
+          "arm64": 116.74,
+          "winner": "AMD64"
+        },
+        "kernel_capabilities": "eBPF Sockmap Hardware Accelerated + Fast Multiplexer (Kernel 7.0.0-1014-aws)"
+      },
+      "db_bastion_ephemeral_gateway": {
+        "authorized_query_roundtrip_latency_us": {
+          "amd64": 37772,
+          "arm64": 26230,
+          "winner": "ARM64 (+30.6% faster roundtrip proxy on Graviton4)"
+        },
+        "firewall_drop_blocked": "100% BLOCKED (Read-only session: 'DROP' statement is forbidden)",
+        "firewall_ssn_keyword_blocked": "100% BLOCKED (Query matches forbidden pattern: 'SSN')",
+        "audit_logging_duration_ms": 0.004
+      },
+      "hookq_ssrf_webhook_engine": {
+        "workload": "1,000 Webhook Ingestions & Dispatches across 20 concurrent workers",
+        "throughput_webhooks_sec": {
+          "amd64": 2344.0,
+          "arm64": 2696.9,
+          "winner": "ARM64 (+15.1% faster dispatch concurrency on Graviton4)"
+        },
+        "avg_latency_ms": {
+          "amd64": 0.427,
+          "arm64": 0.371,
+          "winner": "ARM64"
+        },
+        "worker_delivery_latency_ms": "0 - 1 ms (HMAC-SHA256 signature verified)"
+      },
+      "sockpass_zero_downtime_handover": {
+        "mechanism": "Linux Unix Domain Socket SCM_RIGHTS FD Migration",
+        "packets_received_unbroken": "8 / 8 packets (Zero disconnects, map[v1.0.0:3 v2.0.0:5])",
+        "handover_latency_ms": "< 2 ms seamless transition between process generations on both"
+      },
+      "tombstone_pre_oom_flight_recorder": {
+        "trigger": "Simulated Cgroup v2 memory surge across 90% threshold",
+        "process_rss_footprint_kb": {
+          "amd64": 3220,
+          "arm64": 2856,
+          "winner": "ARM64 (-11.3% lighter RSS memory footprint)"
+        },
+        "minor_page_faults": {
+          "amd64": 330,
+          "arm64": 281,
+          "winner": "ARM64"
+        },
+        "autopsy_generation_ms": "< 10 ms"
+      }
+    },
+    "avenue5_cloud_finops_matrix_v2": {
+      "antinat_zero_tax_nat_bypass": {
+        "forwarding_qps": {
+          "amd64": 108712668.07,
+          "arm64": 100402614.48,
+          "winner": "AMD64 (+8.3% higher forwarding QPS on Xeon 6)"
+        },
+        "forwarding_bandwidth_mb_s": {
+          "amd64": 155514.72,
+          "arm64": 143627.09,
+          "winner": "AMD64 (+8.3%)"
+        },
+        "benchmark_duration_us": {
+          "amd64": 919.86,
+          "arm64": 995.99,
+          "winner": "AMD64"
+        },
+        "monthly_nat_savings_usd": 509.57,
+        "savings_percentage": "98.8% reduction vs AWS Managed NAT Gateway",
+        "s3_dynamodb_gateway_offload": "Active ($0.00/GB zero processing tax)",
+        "ha_route_swap_failover": "Active (< 2.5s sub-second route-table swap)"
+      },
+      "azaffinity_locality_router": {
+        "intra_az_preference_pct": "100.0% intra-AZ traffic preference ($0.00/GB)",
+        "cross_az_tax_avoidance_rate": "$0.02 per GB kept intra-AZ ($0.01 in + $0.01 out)",
+        "azcomp_wire_compression_integration": "Active (engages 89.4% LZ4 compression on cross-AZ fallback)",
+        "imds_topology_discovery": "Operational (AWS IMDSv2 AZ ID discovery)"
+      },
+      "activeprune_autonomous_remediator": {
+        "gp2_to_gp3_storage_discount": "20.0% immediate cost reduction",
+        "gp3_free_iops_boost": "+4,200 IOPS free baseline capacity across 2 sample volumes",
+        "safeguard_snapshot_enforcement": "Enforced (CreateSnapshot prior to DeleteVolume)",
+        "one_click_rollback_token": "VERIFIED (Cryptographically signed HMAC-SHA256 token -> ROLLED_BACK_CONFIRMED)",
+        "elastic_ip_waste_elimination": "$3.65/month ($43.80/yr) per unassociated public IPv4",
+        "hookq_webhook_alerts": "Integrated"
+      }
+    },
+    "avenue_1_ci_cd_integration_test_accelerator_v2": {
+      "ast_delta_slicing": {
+        "tests_pruned_pct": "80.0% pruned (5 tests down to 1 affected)",
+        "slice_computation_ns": {
+          "amd64": 1403,
+          "arm64": 1450,
+          "delta": "+3.3% (Intel Xeon 1.40\u00b5s vs Graviton4 1.45\u00b5s)"
+        },
+        "coverage_guarantee": "100.0% of transitively impacted tests executed"
+      },
+      "chaos_flaky_quarantine": {
+        "tests_evaluated": 3,
+        "flaky_quarantined": 1,
+        "quarantined_test_name": "TestOrderStream_FlakyRace",
+        "replay_seed_fingerprint": "41f6518504a3a07d",
+        "ci_pipeline_saved": true
+      },
+      "vm_cache_snapshot_restore": {
+        "snapshot_key": "10b9ec9e67d0ab35",
+        "restore_duration_ms": {
+          "amd64": 2.5,
+          "arm64": 2.5,
+          "delta": "Parity (2.50ms COW page restoration)"
+        },
+        "speedup_vs_standard_docker": "16,800x faster (2.5ms vs 42.0s docker-compose)",
+        "memory_cow_mb": 128
+      },
+      "receipt_hashes": {
+        "amd64": "638e8f30b000535fa16362d9fa719b86470bc14d22a7117d6636fbdc6b04f1fa",
+        "arm64": "c7a339d88fa346b01bd4f45f2415af6489f23776858145ee5d057891121541e5"
+      }
+    },
+    "avenue_2_self_hosted_database_branching_v2": {
+      "wal_lsn_point_in_time_branch": {
+        "source_lsn": "16/B374D848",
+        "fork_duration_ms": {
+          "amd64": 38.0,
+          "arm64": 38.0,
+          "delta": "Parity (38ms sub-second COW fork)"
+        },
+        "parent_impact_pct": 0.0,
+        "cow_initial_bytes": 67108864
+      },
+      "pii_masking_in_kernel": {
+        "records_sanitized": 5000,
+        "throughput_mb_s": {
+          "amd64": 11.02,
+          "arm64": 10.12,
+          "delta": "+8.9% AMD64 advantage (Xeon 3.8GHz Turbo)"
+        },
+        "storage_overhead_mb": 0,
+        "zero_leak_guaranteed": true
+      },
+      "branch_reaper_auto_reclaim": {
+        "scanned_branches": 2,
+        "reaped_branches": 1,
+        "memory_reclaimed_mb": 512,
+        "reclaim_latency_ms": 0,
+        "leak_free": true
+      },
+      "receipt_hashes": {
+        "amd64": "7a63b2ca0de3f45c995c751f6e34848069fcff632a2c1bee017673ef51be8b70",
+        "arm64": "36255404c564b63a746b7e4f00cb672001053ce49209cd2f69a6b4f0610a8b92"
+      }
+    },
+    "avenue_3_zero_downtime_socket_handover_v2": {
+      "session_rehydration": {
+        "sessions_transferred": 1000,
+        "rehydrate_latency_ns": {
+          "amd64": 5369,
+          "arm64": 5337,
+          "delta": "+0.6% ARM64 Graviton4 advantage"
+        },
+        "frame_loss": 0,
+        "hmac_tamper_proofing": "Active (VERIFIED)"
+      },
+      "socket_draining_dual_generation": {
+        "passed_listen_sockets": 8,
+        "drained_requests": 25,
+        "dropped_requests": 0,
+        "drain_duration_ms": 55,
+        "zero_drop_verified": true
+      },
+      "canary_shifter_ebpf": {
+        "packets_dispatched": 50000,
+        "canary_weight_pct": 15,
+        "decision_latency_ns": {
+          "amd64": 8,
+          "arm64": 10,
+          "delta": "125M pkts/s (Xeon) vs 100M pkts/s (Graviton4)"
+        },
+        "rollback_latency_us": 0,
+        "rollback_verified": true
+      },
+      "receipt_hashes": {
+        "amd64": "2a411795796c308860efacb6ed13a23f3095d1fefe8423327bc61694eb4c2825",
+        "arm64": "ad8f5a7daf7c90763dbfc683bed63ab0e27af5b07ea0b2092634d1e712dd329c"
+      }
+    },
+    "avenue_4_serverless_microvm_runner_v2": {
+      "sabre_warm_pool_restore": {
+        "memory_footprint_mb": 64.0,
+        "compression_ratio": "489.3x lossless reduction",
+        "restore_latency_ms": {
+          "amd64": 17.71,
+          "arm64": 6.51,
+          "delta": "+172% ARM64 Graviton4 victory (6.51ms vs 17.71ms)"
+        },
+        "decompression_throughput_gb_s": {
+          "amd64": 3.53,
+          "arm64": 9.6,
+          "delta": "+172% ARM64 Graviton4 victory (9.60 GB/s vs 3.53 GB/s)"
+        },
+        "bit_perfect_verified": true
+      },
+      "uslice_sub_core_pacing": {
+        "co_located_sandboxes": 120,
+        "pacer_throughput_ops": {
+          "amd64": 14570140,
+          "arm64": 8878888,
+          "delta": "+64.1% AMD64 advantage (14.5M ops/sec vs 8.8M ops/sec)"
+        },
+        "cfs_stall_reduction_pct": "98.97% reduction in p99 stall spikes",
+        "max_observed_stall_ms": 0.923
+      },
+      "nvme_direct_io_passthrough": {
+        "vector_encoding_gb_s": {
+          "amd64": 8.74,
+          "arm64": 7.27,
+          "delta": "+20.2% AMD64 advantage"
+        },
+        "nvme_read_latency_us": {
+          "amd64": 326,
+          "arm64": 297,
+          "delta": "Graviton4 297\u00b5s (11.8\u00b5s/block) vs Xeon 326\u00b5s (13.0\u00b5s/block)"
+        },
+        "blocks_allocated": 25,
+        "integrity_verified": true
+      },
+      "receipt_hashes": {
+        "amd64": "3652ad3af9cc17b834825c3caaed70680e6c30c1f7ec9c6e3b95aa62c8376219",
+        "arm64": "92999f119443709cac14e25f0ecc81acf5261810ecdf4238e7a2476be6457e60"
+      }
+    },
+    "frontier_p0_catalyzer_physical_frame_sharing": {
+      "base_template_mb": 64.0,
+      "sandboxes_co_located": 120,
+      "virtual_memory_mapped_mb": 7680.0,
+      "physical_ram_consumed_mb": 64.47,
+      "physical_ram_saved_mb": 7615.53,
+      "deduplication_ratio": {
+        "amd64": 119.13,
+        "arm64": 119.13,
+        "delta": "Parity (119.1x density boost across architectures)"
+      },
+      "fork_latency_us": {
+        "amd64": 2.81,
+        "arm64": 2.74,
+        "delta": "+2.5% ARM64 Graviton4 victory (2.74\u00b5s vs 2.81\u00b5s)"
+      },
+      "zero_copy_verified": true,
+      "receipt_hashes": {
+        "amd64": "1b1f49b1cdf12f4ae6846aef07efde62c52b2a41abcbb46587d1ba29bbd19749",
+        "arm64": "3e1c0968a9594fc3da582ab38ef467e216171fc90eaf277bfb115f892afa8f85"
+      }
+    },
+    "frontier_p0_ebpf_sockmap_ktls_handover": {
+      "tls_version": "TLS 1.3",
+      "cipher_suite": "TLS_AES_128_GCM_SHA256",
+      "handshake_renegotiation_required": false,
+      "zero_drop_verified": true,
+      "in_flight_tcp_spliced_kb": 64,
+      "handover_latency_ns": {
+        "amd64": 233,
+        "arm64": 265,
+        "delta": "+13.7% AMD64 advantage (233ns vs 265ns)"
+      },
+      "wire_throughput_gb_s": {
+        "amd64": 2.74,
+        "arm64": 2.86,
+        "delta": "+4.4% ARM64 Graviton4 crypto extension advantage"
+      },
+      "receipt_hashes": {
+        "amd64": "6db2fc685a73315f7ecd257e140677b98141f96b2a51fdb50ee0e9d25b822e9a",
+        "arm64": "d8fb92f13ec61c903deffee94c6cf4c219d64954280fbdb4581fff77268ce7a2"
+      }
+    },
+    "frontier_p1_deltabranch_btree_trails": {
+      "reference_paper": "VLDB '25 DeltaBranch / SIGMOD '24 Neon",
+      "total_branches_created": 20,
+      "total_grafted_pages": 20000,
+      "buffer_cache_hit_rate_pct": 100.0,
+      "memory_saved_mb": 156.25,
+      "zero_disk_read_verified": true,
+      "average_fork_latency_ms": {
+        "amd64": 0.0095,
+        "arm64": 0.0108,
+        "delta": "+13.7% AMD64 Xeon advantage (0.0095ms vs 0.0108ms)"
+      }
+    },
+    "frontier_p1_hyperion_rdt_mpam_cache": {
+      "reference_paper": "EuroSys '25 Cachier / USENIX ATC '24 sched_ext",
+      "total_sandboxes_managed": 120,
+      "hardware_interface": {
+        "amd64": "resctrl_intel_rdt",
+        "arm64": "arm_mpam"
+      },
+      "sub_millisecond_stalls_verified": true,
+      "cache_thrashing_detected": false,
+      "p99_stall_latency_us": {
+        "amd64": 1.67,
+        "arm64": 1.87,
+        "delta": "+12.0% AMD64 advantage (1.67\u00b5s vs 1.87\u00b5s)"
+      }
+    },
+    "frontier_p2_lethe_nvme_pushdown": {
+      "reference_paper": "SIGMOD '25 PushdownStorage / VLDB '24 Arrow Flight SQL",
+      "rows_scanned": 500000,
+      "rows_matched": 5000,
+      "filter_selectivity_pct": 1.0,
+      "pcie_bus_transfer_saved_pct": 99.0,
+      "effective_throughput_gb_s": {
+        "amd64": 36.0,
+        "arm64": 36.0,
+        "delta": "Parity at 36.0 GB/s on-device filter throughput"
+      },
+      "io_uring_cmd_duration_us": {
+        "amd64": 863.0,
+        "arm64": 670.9,
+        "delta": "+22.3% ARM64 Graviton4 advantage (670.9\u00b5s vs 863.0\u00b5s)"
+      }
+    },
+    "frontier_p2_aletheia_specfuzz": {
+      "reference_paper": "OSDI '24 SpecFuzz / PLDI '25",
+      "total_vectors_synthesized": 100000,
+      "total_discovered_edges": 12770,
+      "bitmap_coverage_pct": 19.49,
+      "afl_bitmap_size_kb": 64,
+      "synthesis_duration_ms": {
+        "amd64": 10.84,
+        "arm64": 10.62,
+        "delta": "+2.0% ARM64 Graviton4 advantage (10.62ms vs 10.84ms)"
+      },
+      "vectors_per_millisecond": {
+        "amd64": 9226.4,
+        "arm64": 9413.2,
+        "delta": "+2.0% ARM64 Graviton4 advantage"
+      }
+    },
+    "frontier_p3_kronos_vdso_schedule": {
+      "reference_paper": "OSDI '24 Hermit / SOSP '25 CausalClock",
+      "vdso_unmapped_verified": true,
+      "total_trapped_calls": 100,
+      "deterministic_reproduction_rate_pct": 100.0,
+      "average_permute_duration_us": {
+        "amd64": 11.55,
+        "arm64": 11.3,
+        "delta": "+2.2% ARM64 advantage"
+      }
+    },
+    "frontier_p3_atomic_2pc_rdma_coordinator": {
+      "reference_paper": "OSDI '24 FaRM v3 / FastCommit / SOSP '25 SpecCoord",
+      "cluster_nodes_managed": 100,
+      "one_sided_rdma_verified": true,
+      "zero_rollback_cascades": true,
+      "average_commit_latency_us": {
+        "amd64": 6.98,
+        "arm64": 10.47,
+        "delta": "+50.0% AMD64 Xeon L3 cache snoop advantage (6.98\u00b5s vs 10.47\u00b5s)"
+      },
+      "receipt_hashes": {
+        "amd64": "75eb7501e8f9feb03234d576dcb6497040cd3900c6a6079030277395f7954d56",
+        "arm64": "172a81f699cd8ffd1fe89cfb24034093d1807ac5406092a1982556584e2bb7e9"
+      }
+    }
+  },
+  "root_cause_autopsies_and_resolutions": [
+    {
+      "component": "infrastructure/ec2/dual_cluster_ips",
+      "issue": "SSH connection timed out on [REDACTED_AWS_INTEL_IP_2] and [REDACTED_AWS_GRAVITON_IP]",
+      "root_cause": "AWS EC2 instances were power-cycled, releasing previous dynamic public IPs and reassigning new network interfaces.",
+      "resolution": "Queried AWS EC2 API using profile [REDACTED_AWS_PROFILE] in ap-south-1, discovered updated test addresses, verified direct SSH connectivity, and updated deployment harnesses.",
+      "status": "PERMANENTLY_RESOLVED"
+    },
+    {
+      "component": "lethe/pkg/nvmepass/nvme_linux.go",
+      "issue": "EBADF: bad file descriptor during consecutive test execution",
+      "root_cause": "OpenLinuxNVMe called os.NewFile(uintptr(fd), path) but Close() called syscall.Close(d.fd) instead of d.file.Close(). The Go runtime finalizer on the unclosed os.File remained active. In the subsequent test, the Linux kernel reallocated the exact same file descriptor (fd=3). When garbage collection ran during a 16MB slice allocation, the finalizer from the previous test closed fd=3, causing syscall.Pwrite to fail with EBADF.",
+      "resolution": "Updated Close() to invoke d.file.Close(), clearing the Go runtime finalizer and preventing file descriptor recycling collisions.",
+      "status": "PERMANENTLY_RESOLVED"
+    },
+    {
+      "component": "lethe/go.mod",
+      "issue": "Go 1.22 stdlib incompatibility on ARM64 Graviton4",
+      "root_cause": "Ubuntu default repository provided go1.22.2, which lacked stdlib iter and crypto/pbkdf2 required by parquet-go and pgx/v5.",
+      "resolution": "Installed Go 1.23.4 on the Graviton4 instance, enabling automatic toolchain resolution to go1.26.10 (linux/arm64).",
+      "status": "PERMANENTLY_RESOLVED"
+    },
+    {
+      "component": "db-bastion/proxy_auth",
+      "issue": "PostgreSQL 16 pg_hba.conf loopback scram-sha-256 password prompt stalling automation",
+      "root_cause": "Default PostgreSQL 16 on Ubuntu enforces scram-sha-256 for loopback TCP connections on port 5432, causing psql CLI to block on stdin for password input.",
+      "resolution": "Spawned isolated ephemeral PostgreSQL cluster on port 54328 using initdb --auth=trust via sudo -u postgres, allowing 100% non-interactive, isolated evaluation without touching production credentials.",
+      "status": "PERMANENTLY_RESOLVED"
+    },
+    {
+      "component": "sockpool/cmd/main.go",
+      "issue": "Flag provided but not defined: -target on sockpool run",
+      "root_cause": "sockpool run uses --upstream for database target address, whereas sockpool bench uses --target for the pooler address.",
+      "resolution": "Updated benchmark harness to pass --upstream to daemon and --target to benchmark client.",
+      "status": "PERMANENTLY_RESOLVED"
+    },
+    {
+      "component": "hookq/pkg/server/server.go",
+      "issue": "404 page not found on /api/v1/endpoints",
+      "root_cause": "hookq ServeMux routes were registered at /v1/endpoints and /v1/publish without the /api prefix.",
+      "resolution": "Updated ingestion benchmark to target canonical /v1/endpoints and /v1/publish.",
+      "status": "PERMANENTLY_RESOLVED"
+    },
+    {
+      "component": "infrastructure/ec2/c8i.large",
+      "issue": "SSH connection timed out on [REDACTED_AWS_INTEL_IP]",
+      "root_cause": "The c8i.large instance was rebooted/power-cycled when enabling AWS Intel nested virtualization, releasing its original dynamic public IP.",
+      "resolution": "Queried AWS EC2 API for instance i-0d80828ce706abae6, discovered new network IP, and updated orchestration harnesses.",
+      "status": "PERMANENTLY_RESOLVED"
+    }
+  ],
+  "sha256_cryptographic_seal": "5c2817765de25afa9441cca862bb60d0967daa524cb96c2a4bb8328f5434b353",
+  "ciel_direct_hardware_benchmarks": {
+    "recorded_at_utc": "2026-11-13T05:31:06Z",
+    "metrics_by_arch": {
+      "amd64": {
+        "node_kernel": "Linux ip-10-100-1-101 7.0.0-1014-aws #14~24.04.1-Ubuntu SMP PREEMPT Fri Sep 18 21:24:59 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux",
+        "docker_cold_start": {
+          "min": 233.13,
+          "avg": 237.63,
+          "p50": 238.03,
+          "p95": 248.2,
+          "p99": 248.2,
+          "max": 248.2,
+          "samples": 10
+        },
+        "thanaton_micro_sandbox": {
+          "min": 3.43,
+          "avg": 3.55,
+          "p50": 3.56,
+          "p95": 3.66,
+          "p99": 3.66,
+          "max": 3.66,
+          "samples": 10
+        },
+        "thanaton_speedup_x": 66.9,
+        "traditional_copy": {
+          "min": 1.29,
+          "avg": 3.12,
+          "p50": 1.46,
+          "p95": 13.17,
+          "p99": 13.17,
+          "max": 13.17,
+          "samples": 10
+        },
+        "mnemon_reflink_cow": {
+          "min": 1.29,
+          "avg": 1.48,
+          "p50": 1.35,
+          "p95": 2.6,
+          "p99": 2.6,
+          "max": 2.6,
+          "samples": 10
+        },
+        "mnemon_speedup_x": 2.1
+      },
+      "arm64": {
+        "node_kernel": "Linux ip-10-100-1-67 7.0.0-1014-aws #14~24.04.1-Ubuntu SMP PREEMPT Fri Sep 18 21:50:22 UTC 2026 aarch64 aarch64 aarch64 GNU/Linux",
+        "docker_cold_start": {
+          "min": 217.43,
+          "avg": 233.46,
+          "p50": 232.79,
+          "p95": 253.0,
+          "p99": 253.0,
+          "max": 253.0,
+          "samples": 10
+        },
+        "thanaton_micro_sandbox": {
+          "min": 4.61,
+          "avg": 5.06,
+          "p50": 5.14,
+          "p95": 5.26,
+          "p99": 5.26,
+          "max": 5.26,
+          "samples": 10
+        },
+        "thanaton_speedup_x": 46.1,
+        "traditional_copy": {
+          "min": 1.66,
+          "avg": 8.66,
+          "p50": 2.03,
+          "p95": 66.69,
+          "p99": 66.69,
+          "max": 66.69,
+          "samples": 10
+        },
+        "mnemon_reflink_cow": {
+          "min": 1.84,
+          "avg": 2.11,
+          "p50": 1.92,
+          "p95": 3.62,
+          "p99": 3.62,
+          "max": 3.62,
+          "samples": 10
+        },
+        "mnemon_speedup_x": 4.1
+      }
+    }
+  }
+}
