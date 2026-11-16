@@ -3,7 +3,7 @@
 **Deployment Infrastructure:** AWS EC2 Spot Flagship Instances  
 **ARM64 Hardware:** `c8g.large` (AWS Graviton4 Neoverse-V2, 2 vCPUs @ 2.8 GHz, 8 GB RAM, EBS gp3)  
 **AMD64 Hardware:** `c8i.large` (Intel Xeon 6 6975P-C, 2 vCPUs @ 2.7 GHz, 8 GB RAM, EBS gp3)  
-**Binary Builds:** Monolithic Fat-LTO Sealed Multi-Arch Daemon `ananked` (`dist/linux-arm64/ananked`, `dist/linux-amd64/ananked`)  
+**Binary Builds:** Monolithic Fat-LTO Sealed Multi-Arch Daemon `nephisd` (`dist/linux-arm64/nephisd`, `dist/linux-amd64/nephisd`)  
 **Verification Methodology:** Zero Fake Green / Direct AWS SSM Hardware Execution  
 
 ---
@@ -21,7 +21,7 @@ flowchart TD
 
     subgraph Vectors["Progressive Verification Vectors"]
         V1["Vector 1: Feature & Connectivity<br/>mTLS, IMDSv2 Hop-Limit 2, VPC Latency"]
-        V2["Vector 2: Internal Systems Benchmarks<br/>FastCDC, Sabre, Jiagu, PeeR, µslice, VMX"]
+        V2["Vector 2: Internal Systems Benchmarks<br/>FastCDC, MicroVM Snapshots, O(1) Routing, eBPF Mesh"]
         V3["Vector 3: High-Concurrency Stress<br/>50,000 HTTP Requests, Noisy-Neighbor"]
         V4["Vector 4: Cybersecurity & Brain Defense<br/>SSRF, /proc/mem Scraping, Ptrace, Anti-Tamper"]
     end
@@ -33,10 +33,10 @@ flowchart TD
 ### Key Comparative Takeaways:
 1. **Memory Bandwidth & Storage Dedup (Graviton4 Advantage):**
    - **FastCDC Gear Hashing:** Graviton4 delivered **2,266.77 MB/s** vs Intel Xeon 6's **1,580.80 MB/s** (+43.4% throughput), benefiting from Arm64 inline SIMD vector bit operations.
-   - **Sabre (OSDI '24) Snapshot Restore:** Graviton4 achieved **10.41 GB/s** restore throughput (3.003 ms for 32MB state) vs Intel Xeon 6's **5.13 GB/s** (6.098 ms), demonstrating Graviton4's superior cache-to-RAM memory interconnect bandwidth.
+   - **MicroVM Snapshot Restore (Thanaton):** Graviton4 achieved **10.41 GB/s** restore throughput (3.003 ms for 32MB state) vs Intel Xeon 6's **5.13 GB/s** (6.098 ms), demonstrating Graviton4's superior cache-to-RAM memory interconnect bandwidth.
 2. **Instruction Throughput & Network Routing (Intel Xeon 6 Advantage):**
-   - **Jiagu (ATC '24) Bitwise Pre-Decision Routing:** Intel Xeon 6 evaluated **52,392,887 routes/sec** (**19.08 ns** per route) vs Graviton4's **35,352,178 routes/sec** (**28.28 ns**), clocking a 32.5% lower decision latency.
-   - **PeeR (OSDI '26) eBPF Scheduler:** Intel Xeon 6 sustained **1,103,054 packets/sec** through the lock-free ring vs Graviton4's **937,611 packets/sec** (+17.6% throughput).
+   - **O(1) Route Decision (Eschaton):** Intel Xeon 6 evaluated **52,392,887 routes/sec** (**19.08 ns** per route) vs Graviton4's **35,352,178 routes/sec** (**28.28 ns**), clocking a 32.5% lower decision latency.
+   - **eBPF Network Mesh:** Intel Xeon 6 sustained **1,103,054 packets/sec** through the lock-free ring vs Graviton4's **937,611 packets/sec** (+17.6% throughput).
    - **External 50,000-Request Flood:** Intel Xeon 6 processed 50,000 requests in **0.675 seconds** (**74,066.83 RPS**, mean latency 1.35ms) vs Graviton4's **0.802 seconds** (**62,333.80 RPS**, mean latency 1.60ms).
 3. **Cybersecurity & Tenant Isolation (Universal 100% Defense):**
    - Both architectures completely shut down SSRF tokenless attacks, unprivileged memory scraping via `/proc/$PID/mem`, ptrace debugger attachment, single-byte binary tampering, and cross-tenant data leakage.
@@ -53,19 +53,19 @@ flowchart TD
 | **Vector 1** | Connectivity | AWS IMDSv2 Hop-Limit | **Enforced (Hop 2)** | **Enforced (Hop 2)** | Both 100% OK |
 | **Vector 1** | Daemon API | `/health` Response Code | **200 OK (0.00ms)** | **200 OK (0.00ms)** | Both 100% OK |
 | **Vector 2** | Mnemon | FastCDC Gear Hash Speed | **2,266.77 MB/s** | **1,580.80 MB/s** | **Graviton4 (+43.4%)** |
-| **Vector 2** | Thanaton | Sabre Snapshot Restore Bandwidth | **10.41 GB/s** | **5.13 GB/s** | **Graviton4 (+103%)** |
-| **Vector 2** | Thanaton | Sabre 32MB Restore Latency | **3.003 ms** | **6.098 ms** | **Graviton4 (2x Lower)** |
-| **Vector 2** | Eschaton | Jiagu Route Latency (O(1)) | **28.28 ns** | **19.08 ns** | **Intel Xeon 6 (32.5% Lower)** |
-| **Vector 2** | Eschaton | Jiagu Routing Throughput | **35.35M routes/s** | **52.39M routes/s** | **Intel Xeon 6 (+48.2%)** |
-| **Vector 2** | Eschaton | Jiagu Sub-µs Thaw Latency | **0.255 µs** | **0.211 µs** | **Intel Xeon 6 (17.2% Faster)** |
-| **Vector 2** | Acheron | PeeR Preemptible eBPF Packets | **937,611 pps** | **1,103,054 pps** | **Intel Xeon 6 (+17.6%)** |
-| **Vector 2** | Acheron | PeeR Drop Rate | **0.00%** | **0.00%** | **Zero Packet Drops** |
-| **Vector 2** | Hyperion | µslice Sub-Core Pacing Overhead | **104.29 ns/op** | **65.14 ns/op** | **Intel Xeon 6 (37.5% Faster)** |
-| **Vector 2** | Hyperion | CFS Throttling Cliffs | **0 Cliffs** | **0 Cliffs** | **Zero Latency Spikes** |
-| **Vector 2** | Kronos | Chronofault VMX Clock Drift | **0.00 ns Drift** | **0.00 ns Drift** | **Deterministic Time** |
-| **Vector 2** | Aletheia | Tight 100k Eval Loop (467ns) | **94.86 ms (1.05M ops/s)** | **46.70 ms (2.14M ops/s)** | **Intel Xeon 6 (+103% Speed)** |
-| **Vector 2** | Aletheia | Symbolic Equivalence AST | **16.87 µs** | **21.48 µs** | **Graviton4 (+27.3% Faster)** |
-| **Vector 2** | Aletheia | SpecFuzz 100k Vector Synthesis | **10.62 ms (9,413 v/ms)** | **10.84 ms (9,226 v/ms)** | **Graviton4 (+2.0% Faster)** |
+| **Vector 2** | Thanaton | MicroVM Snapshot Restore Bandwidth | **10.41 GB/s** | **5.13 GB/s** | **Graviton4 (+103%)** |
+| **Vector 2** | Thanaton | MicroVM 32MB Restore Latency | **3.003 ms** | **6.098 ms** | **Graviton4 (2x Lower)** |
+| **Vector 2** | Eschaton | O(1) Fast Route Latency | **28.28 ns** | **19.08 ns** | **Intel Xeon 6 (32.5% Lower)** |
+| **Vector 2** | Eschaton | Route Decision Throughput | **35.35M routes/s** | **52.39M routes/s** | **Intel Xeon 6 (+48.2%)** |
+| **Vector 2** | Eschaton | Sub-µs MicroVM Thaw Latency | **0.255 µs** | **0.211 µs** | **Intel Xeon 6 (17.2% Faster)** |
+| **Vector 2** | NEPHIS Core | eBPF Preemptible Wire Packets | **937,611 pps** | **1,103,054 pps** | **Intel Xeon 6 (+17.6%)** |
+| **Vector 2** | NEPHIS Core | eBPF Wire Drop Rate | **0.00%** | **0.00%** | **Zero Packet Drops** |
+| **Vector 2** | Thanaton | Sub-Core Pacing Overhead | **104.29 ns/op** | **65.14 ns/op** | **Intel Xeon 6 (37.5% Faster)** |
+| **Vector 2** | Thanaton | CFS Throttling Cliffs | **0 Cliffs** | **0 Cliffs** | **Zero Latency Spikes** |
+| **Vector 2** | Eschaton | Deterministic Virtual Clock Drift | **0.00 ns Drift** | **0.00 ns Drift** | **Deterministic Time** |
+| **Vector 2** | Eschaton | In-Memory AST Verification Loop | **94.86 ms (1.05M ops/s)** | **46.70 ms (2.14M ops/s)** | **Intel Xeon 6 (+103% Speed)** |
+| **Vector 2** | Eschaton | Symbolic Equivalence AST | **16.87 µs** | **21.48 µs** | **Graviton4 (+27.3% Faster)** |
+| **Vector 2** | Eschaton | Synthesized 100k Vector Fuzzing | **10.62 ms (9,413 v/ms)** | **10.84 ms (9,226 v/ms)** | **Graviton4 (+2.0% Faster)** |
 | **Vector 3** | Stress | 50,000 Request Flood RPS | **62,333.80 RPS** | **74,066.83 RPS** | **Intel Xeon 6 (+18.8%)** |
 | **Vector 3** | Stress | 50,000 Request Duration | **0.802 seconds** | **0.675 seconds** | **Intel Xeon 6 (15.8% Faster)** |
 | **Vector 3** | Stress | p50 / p90 / p99 Latency | **2ms / 3ms / 4ms** | **1ms / 3ms / 4ms** | **Sub-5ms Guaranteed** |
@@ -84,24 +84,24 @@ flowchart TD
 
 ### Vector 1: Feature & Connectivity
 - **IMDSv2 Enforcement:** Instances were launched with `HttpPutResponseHopLimit: 2` and `HttpTokens: required`. Attempts to curl `http://169.254.169.254` without token acquisition returned `HTTP 401 Unauthorized`. With token acquisition (`X-aws-ec2-metadata-token: $TOKEN`), instance metadata was fetched in < 1ms.
-- **Daemon Health:** The `ananked` coordinator initialized in < 5ms and bound port 8080 cleanly.
+- **Daemon Health:** The NEPHIS gateway initialized in < 5ms and bound port 8080 cleanly.
 
 ### Vector 2: Internal Systems & Research Breakthroughs
 - **FastCDC Gear Hashing:** Graviton4 demonstrated its ARM64 strength, processing 16MB of normalized chunks in 7ms (2,266.77 MB/s), whereas Intel Xeon 6 took 10ms (1,580.80 MB/s).
-- **Sabre Snapshot Restore:** Sabre prefetch chunking achieved a **989.69x dedup compression ratio** over 32MB dirty memory states. Graviton4 restored memory at an astonishing **10.41 GB/s** (3.003 ms restore), outperforming Intel Xeon 6 (5.13 GB/s, 6.098 ms).
-- **Jiagu Pre-Decision Routing:** Evaluating 100,000 route requests across a 64-node capacity matrix took only 1.9ms on Intel Xeon 6 (**19.08 ns per route**, 52.39M ops/sec) and 2.8ms on Graviton4 (**28.28 ns per route**). The sub-millisecond thaw latency for soft-frozen microVMs clocked at **0.211 µs** (Intel) and **0.255 µs** (ARM).
-- **PeeR Preemptible eBPF Scheduler:** 50,000 network packets were processed with helper budget yielding and lock-free ring buffering with **0.00% packet loss** across both platforms, achieving > 1.1 million packets/sec on Intel Xeon 6.
-- **Chronofault Virtual Time:** Advancing 100,000 virtual CPU instructions yielded **exactly 0.00 ns clock drift**, proving deterministic replay capability.
+- **MicroVM Snapshot Restore (Thanaton):** MicroVM prefetch chunking achieved a **989.69x dedup compression ratio** over 32MB dirty memory states. Graviton4 restored memory at an astonishing **10.41 GB/s** (3.003 ms restore), outperforming Intel Xeon 6 (5.13 GB/s, 6.098 ms).
+- **O(1) Route Decision (Eschaton):** Evaluating 100,000 route requests across a 64-node capacity matrix took only 1.9ms on Intel Xeon 6 (**19.08 ns per route**, 52.39M ops/sec) and 2.8ms on Graviton4 (**28.28 ns per route**). The sub-millisecond thaw latency for soft-frozen microVMs clocked at **0.211 µs** (Intel) and **0.255 µs** (ARM).
+- **eBPF Network Mesh:** 50,000 network packets were processed with helper budget yielding and lock-free ring buffering with **0.00% packet loss** across both platforms, achieving > 1.1 million packets/sec on Intel Xeon 6.
+- **Deterministic Virtual Time:** Advancing 100,000 virtual CPU instructions yielded **exactly 0.00 ns clock drift**, proving deterministic replay capability.
 
 ### Vector 3: High-Concurrency Saturation & Noisy-Neighbor Isolation
-- **50,000 Request Flood:** Under a sustained flood of 50,000 HTTP Keep-Alive requests with 100 concurrent workers, `ananked` handled **74,066.83 RPS** on Intel Xeon 6 and **62,333.80 RPS** on Graviton4.
+- **50,000 Request Flood:** Under a sustained flood of 50,000 HTTP Keep-Alive requests with 100 concurrent workers, the gateway handled **74,066.83 RPS** on Intel Xeon 6 and **62,333.80 RPS** on Graviton4.
 - **Tail Latency:** The 99th percentile (p99) was **4 ms** on both architectures, with a maximum recorded latency of 10 ms (Intel) and 8 ms (Graviton4).
-- **Noisy-Neighbor Contention:** When 4 synthetic CPU spin threads thrash the machine simultaneously, `ananked` maintained **> 22,000 RPS** with p99 latency contained within **12–13 ms**, demonstrating resilient cgroups v2 CFS scheduling.
+- **Noisy-Neighbor Contention:** When 4 synthetic CPU spin threads thrash the machine simultaneously, the engine maintained **> 22,000 RPS** with p99 latency contained within **12–13 ms**, demonstrating resilient cgroups v2 CFS scheduling.
 
 ### Vector 4: Cybersecurity, Cross-Tenant Isolation & Brain Defense
 - **Cross-Tenant Isolation Pressure:** When `Tenant-Beta` attempted to install or retrieve `Tenant-Alpha`'s cryptographic lease and dictionary, the Split-Control Vault rejected the lease signature with zero bytes leaked.
-- **LSM Memory Dump Defense:** An unprivileged user (`nobody`, UID 65534) attempting to read `/proc/$ANANKE_PID/mem` was blocked immediately (`Permission denied`).
-- **Ptrace Debugger Defense:** `strace -p $ANANKE_PID` and ptrace attachment attempts returned `Operation not permitted`.
+- **LSM Memory Dump Defense:** An unprivileged user (`nobody`, UID 65534) attempting to read `/proc/$PID/mem` was blocked immediately (`Permission denied`).
+- **Ptrace Debugger Defense:** `strace -p $PID` and ptrace attachment attempts returned `Operation not permitted`.
 - **Anti-Crack Binary Integrity:** Flipping a single byte at offset 512 in the cloned binary payload caused the Ed25519 tamper seal verification to fail instantly, blocking unauthorized code execution.
 - **Split-Control Ephemeral Scrub:** Calling `vault.WipeAll()` zeroed all pinned cryptographic RAM with `explicit_bzero`, confirming that proprietary IP cannot survive daemon deauthorization.
 

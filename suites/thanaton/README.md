@@ -8,5 +8,5 @@ Measures cold-boot latency, memory snapshot restoration, scale-to-zero stasis, a
 
 ## Verified Results:
 * **Cold Boot:** **5.82 ms** (Thanaton) vs. ~450 ms (Docker) — **77x Faster**
-* **Sabre Snapshot Restore (32MB):** **3.003 ms (10.41 GB/s)** on Graviton4, **6.098 ms** on Xeon 6
+* **MicroVM Snapshot Restore (32MB):** **3.003 ms (10.41 GB/s)** on Graviton4, **6.098 ms** on Xeon 6
 * **Scale-to-Zero Idle Footprint:** **0 MB RAM** (Unmapped in stasis) vs. 35 MB / container

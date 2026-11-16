@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-NEPHIS Sovereign Fabric: Master Benchmark & Stress Test Runner
+NEPHIS Cloud: Master Benchmark & Stress Test Runner
 Runs all independent product benchmark suites and outputs a consolidated report.
 """
 import os
@@ -20,14 +20,14 @@ def run_suite(suite_name, script_name):
 
 def main():
     print("===========================================================================")
-    print(" NEPHIS SOVEREIGN FABRIC: REPRODUCIBLE MULTI-ARCH BENCHMARK TESTBED")
+    print(" NEPHIS CLOUD: REPRODUCIBLE MULTI-ARCH BENCHMARK TESTBED")
     print("===========================================================================")
 
     suites = [
         ("eschaton", "benchmark_100_cases.py"),
         ("thanaton", "benchmark_thanaton_vs_docker.py"),
         ("mnemon_db", "benchmark_xfs_reflink.py"),
-        ("acheron", "benchmark_ebpf_compression.py"),
+        ("Thanaton", "benchmark_ebpf_compression.py"),
         ("stress_and_chaos", "stress_50k_request_flood.py"),
     ]
 

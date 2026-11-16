@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Acheron eBPF Wire-Speed Compression & Cross-AZ Invoice Reduction Benchmark"""
+"""eBPF Mesh eBPF Wire-Speed Compression & Cross-AZ Invoice Reduction Benchmark"""
 import zlib
 import time
 
 def main():
     print("=" * 70)
-    print(" ACHERON: CROSS-AZ WIRE COMPRESSION & INVOICE REDUCTION")
+    print(" EBPF MESH: CROSS-AZ WIRE COMPRESSION & INVOICE REDUCTION")
     print("=" * 70)
 
     # 10MB raw SQL dump simulation
@@ -27,7 +27,7 @@ def main():
     print(f"Compression Ratio:            {ratio:.2f}:1")
     print(f"\n>> VERIFIED RESULT:           {savings_pct:.1f}% AWS CROSS-AZ EGRESS REDUCTION!")
     print(f"Standard AWS Egress Invoice:  ${(raw_bytes / (1024**3)) * 0.01:.4f}")
-    print(f"Acheron Wire Mesh Invoice:    ${(comp_bytes / (1024**3)) * 0.01:.4f}")
+    print(f"eBPF Mesh Wire Mesh Invoice:    ${(comp_bytes / (1024**3)) * 0.01:.4f}")
 
 if __name__ == "__main__":
     main()

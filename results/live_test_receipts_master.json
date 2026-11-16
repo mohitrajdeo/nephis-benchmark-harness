@@ -40,7 +40,7 @@
     }
   },
   "comparative_benchmarks": {
-    "ananked_speculation_engine": {
+    "nephis_speculation_engine": {
       "live_api_speculate_ms": {
         "amd64": 0.108,
         "arm64": 0.111,
@@ -89,7 +89,7 @@
         "arm64": "ALL_PASS (6/6 pkgs)"
       }
     },
-    "kronos_time_hypervisor": {
+    "thanaton_monotonic_timer": {
       "virtual_clock_ticks_per_sec": {
         "amd64": 36424709,
         "arm64": 22312072,
@@ -740,14 +740,14 @@
       "status": "PERMANENTLY_RESOLVED"
     },
     {
-      "component": "lethe/pkg/nvmepass/nvme_linux.go",
+      "component": "Mnemon/pkg/nvmepass/nvme_linux.go",
       "issue": "EBADF: bad file descriptor during consecutive test execution",
       "root_cause": "OpenLinuxNVMe called os.NewFile(uintptr(fd), path) but Close() called syscall.Close(d.fd) instead of d.file.Close(). The Go runtime finalizer on the unclosed os.File remained active. In the subsequent test, the Linux kernel reallocated the exact same file descriptor (fd=3). When garbage collection ran during a 16MB slice allocation, the finalizer from the previous test closed fd=3, causing syscall.Pwrite to fail with EBADF.",
       "resolution": "Updated Close() to invoke d.file.Close(), clearing the Go runtime finalizer and preventing file descriptor recycling collisions.",
       "status": "PERMANENTLY_RESOLVED"
     },
     {
-      "component": "lethe/go.mod",
+      "component": "Mnemon/go.mod",
       "issue": "Go 1.22 stdlib incompatibility on ARM64 Graviton4",
       "root_cause": "Ubuntu default repository provided go1.22.2, which lacked stdlib iter and crypto/pbkdf2 required by parquet-go and pgx/v5.",
       "resolution": "Installed Go 1.23.4 on the Graviton4 instance, enabling automatic toolchain resolution to go1.26.10 (linux/arm64).",

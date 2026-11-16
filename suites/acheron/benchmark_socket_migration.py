@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Acheron Live TCP Socket Handover Latency Probe"""
+"""eBPF Mesh Live TCP Socket Handover Latency Probe"""
 def main():
     print("=" * 70)
-    print(" ACHERON: LIVE TCP SOCKET MIGRATION BENCHMARK")
+    print(" EBPF MESH: LIVE TCP SOCKET MIGRATION BENCHMARK")
     print("=" * 70)
     print("Protocol: AF_XDP eBPF socket pass & unprivileged PID transfer")
     print("Measured TCP Socket Migration Latency: 4.89 µs")

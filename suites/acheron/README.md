@@ -1,4 +1,4 @@
-# Acheron Wire Mesh Benchmark: eBPF Inter-Zone Compression
+# eBPF Mesh Wire Mesh Benchmark: eBPF Inter-Zone Compression
 
 Measures wire-speed payload compression and zero-downtime TCP socket migration across availability zones.
 

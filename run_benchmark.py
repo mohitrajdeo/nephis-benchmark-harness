@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-NEPHIS Sovereign Fabric vs. Official Judge0 CE — Reproducible Benchmark Harness
-=============================================================================
+NEPHIS Cloud vs. Official Judge0 CE — Reproducible Benchmark Harness
+====================================================================
 Apples-to-apples performance evaluation across bare-metal systems:
 - GCC 14 (C++)
 - Python 3.12
@@ -173,11 +173,11 @@ def main():
     parser.add_argument("--cases", type=int, default=50, help="Number of test cases in batch")
     args = parser.parse_args()
 
-    print("NEPHIS Sovereign Fabric — Reproducible Benchmark Harness")
+    print("NEPHIS Cloud — Reproducible Benchmark Harness")
     print(f"Workload: {args.cases} Test Cases | Multi-Arch Bare Silicon")
     print("Baseline Hardware: AWS EC2 c8i.large (2 vCPU, 8GB) & c8g.large (2 vCPU, 8GB)")
 
-    nephis_results = run_suite("NEPHIS Sovereign Fabric", args.url, args.cases, token=args.token)
+    nephis_results = run_suite("NEPHIS Cloud", args.url, args.cases, token=args.token)
 
     judge0_reachable = False
     try:
