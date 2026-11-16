@@ -27,7 +27,7 @@ def main():
         ("eschaton", "benchmark_100_cases.py"),
         ("thanaton", "benchmark_thanaton_vs_docker.py"),
         ("mnemon_db", "benchmark_xfs_reflink.py"),
-        ("Thanaton", "benchmark_ebpf_compression.py"),
+        ("acheron", "benchmark_ebpf_compression.py"),
         ("stress_and_chaos", "stress_50k_request_flood.py"),
     ]
 
