@@ -68,7 +68,7 @@
         "arm64": "4/4 OPERATIONAL"
       }
     },
-    "hyperion_scx_scheduler": {
+    "thanaton_scx_scheduler": {
       "zombie_harvester_scans_per_sec": {
         "amd64": 5728,
         "arm64": 4190,
@@ -110,7 +110,7 @@
         "arm64": "ALL_PASS (3/3 pkgs)"
       }
     },
-    "acheron_socket_mesh": {
+    "thanaton_socket_mesh": {
       "snappy_throughput_mb_s": {
         "amd64": 3631.2,
         "arm64": 458.1,
@@ -141,7 +141,7 @@
         "arm64": "ALL_PASS (8/8 pkgs)"
       }
     },
-    "lethe_streaming_lakehouse": {
+    "mnemon_streaming_lakehouse": {
       "parquet_cdc_ingestion_recs_sec": {
         "amd64": 2231483,
         "arm64": 843912,
@@ -172,7 +172,7 @@
         "arm64": "ALL_PASS (6/6 pkgs)"
       }
     },
-    "aletheia_ast_fuel_engine": {
+    "eschaton_ast_fuel_engine": {
       "tight_100k_eval_loop_ms": {
         "amd64": 46.7,
         "arm64": 94.86,
@@ -555,7 +555,7 @@
       }
     },
     "avenue_4_serverless_microvm_runner_v2": {
-      "sabre_warm_pool_restore": {
+      "thanaton_warm_pool_restore": {
         "memory_footprint_mb": 64.0,
         "compression_ratio": "489.3x lossless reduction",
         "restore_latency_ms": {
@@ -655,7 +655,7 @@
         "delta": "+13.7% AMD64 Xeon advantage (0.0095ms vs 0.0108ms)"
       }
     },
-    "frontier_p1_hyperion_rdt_mpam_cache": {
+    "frontier_p1_thanaton_rdt_mpam_cache": {
       "reference_paper": "EuroSys '25 Cachier / USENIX ATC '24 sched_ext",
       "total_sandboxes_managed": 120,
       "hardware_interface": {
@@ -687,7 +687,7 @@
         "delta": "+22.3% ARM64 Graviton4 advantage (670.9\u00b5s vs 863.0\u00b5s)"
       }
     },
-    "frontier_p2_aletheia_specfuzz": {
+    "frontier_p2_eschaton_specfuzz": {
       "reference_paper": "OSDI '24 SpecFuzz / PLDI '25",
       "total_vectors_synthesized": 100000,
       "total_discovered_edges": 12770,
@@ -704,7 +704,7 @@
         "delta": "+2.0% ARM64 Graviton4 advantage"
       }
     },
-    "frontier_p3_kronos_vdso_schedule": {
+    "frontier_p3_thanaton_vdso_schedule": {
       "reference_paper": "OSDI '24 Hermit / SOSP '25 CausalClock",
       "vdso_unmapped_verified": true,
       "total_trapped_calls": 100,
