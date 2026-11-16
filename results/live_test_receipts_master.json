@@ -670,7 +670,7 @@
         "delta": "+12.0% AMD64 advantage (1.67\u00b5s vs 1.87\u00b5s)"
       }
     },
-    "frontier_p2_lethe_nvme_pushdown": {
+    "frontier_p2_mnemon_nvme_pushdown": {
       "reference_paper": "SIGMOD '25 PushdownStorage / VLDB '24 Arrow Flight SQL",
       "rows_scanned": 500000,
       "rows_matched": 5000,
