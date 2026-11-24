@@ -1,0 +1,92 @@
+{
+  "run_at": "2026-11-24T04:28:34.762506+00:00",
+  "target": "https://nephis.theeducode.com",
+  "source": "live cloud, real account keys",
+  "tenant": "b7de0a5a-3e48-41eb-afc2-f62d5d4483b1",
+  "measurements": [
+    {
+      "endpoint": "/v1/metrics/catalog",
+      "method": "GET",
+      "samples": 1,
+      "status": 200,
+      "latency_ms": {
+        "min": 22014.08,
+        "p50": 22014.08,
+        "p95": 22014.08,
+        "max": 22014.08
+      },
+      "response_excerpt": "{\"counts\":{\"branches\":0,\"projects\":0,\"snapshots\":0},\"fetched_at\":\"2026-11-24T04:28:51.304965794Z\",\"projects\":[],\"source\":\"mnemon-control-plane/repository\",\"stale\":false}\n",
+      "label": "mnemon metrics catalog"
+    },
+    {
+      "endpoint": "/api/v1/metrics/fleet/overview",
+      "method": "GET",
+      "samples": 1,
+      "status": 200,
+      "latency_ms": {
+        "min": 25000.93,
+        "p50": 25000.93,
+        "p95": 25000.93,
+        "max": 25000.93
+      },
+      "response_excerpt": "{\"fetched_at\":\"2026-11-24T04:29:11.040978303Z\",\"metrics\":{\"deployments\":{\"value\":0,\"unit\":\"deployments\",\"observed_at\":\"2026-11-24T04:29:11.040978303Z\",\"source\":\"repository.ListDeployments\",\"stale\":false},\"guest_vms\":{\"value\":null,\"unit\":\"VMs\",\"observed_at\":\"2026-11-24T04:29:11.040978303Z\",\"source\":\"not provided by provider\",\"stale\":true},\"idle_cost\":{\"value\":null,\"unit\":\"credits/hour\",\"observed_at\":\"2026-11-24T04:29:11.040978303Z\",\"source\":\"not provided by provider\",\"stale\":true},\"organizations\":{\"value\":14,\"unit\":\"organizations\",\"observed_at\":\"2026-11-24T04:29:11.040978303Z\",\"source\":\"repository.ListOrganizations\",\"stale\":false},\"projects\":{\"value\":25,\"unit\":\"projects\",\"observed_at\":\"2026-11-24T04:29:11.040978303Z\",\"source\":\"repository.ListAllProjects\",\"stale\":false}},\"project_state_counts\":{\"READY\":1,\"STOPPED\":24},\"source\":\"thanaton-control-plane/repository\",\"stale\":false}\n",
+      "label": "thanaton fleet metrics"
+    },
+    {
+      "endpoint": "/v1/account",
+      "method": "GET",
+      "samples": 1,
+      "status": 200,
+      "latency_ms": {
+        "min": 13304.52,
+        "p50": 13304.52,
+        "p95": 13304.52,
+        "max": 13304.52
+      },
+      "response_excerpt": "{\"active\":true,\"credits\":91092,\"credits_expire_at\":null,\"days_remaining\":-1,\"is_credits_expired\":false,\"key_prefix\":\"mrd_live_c242521\",\"preferences\":{\"agent_system_prompt\":\"\",\"alert_email\":\"mohit@mohitrajdeo.in\",\"alert_threshold_credits\":500,\"auto_discard_branches\":true,\"branch_naming_template\":\"agent/{task_id}\",\"compiler_flags\":\"-O3\",\"editor_theme\":\"vs-dark\",\"keybindings\":\"standard\",\"preferred_language\":\"python\",\"speculative_concurrency\":4,\"tab_size\":4,\"webhook_url\":\"\",\"weekly_digest_enabled\":true},\"rate_limit_rps\":10,\"status\":\"authenticated\",\"tenant_id\":\"b7de0a5a-3e48-41eb-afc2-f62d5d4483b1\",\"tenant_slug\":\"org_mohitrajdeo\",\"tier\":\"enterprise\",\"user\":{\"avatar_url\":\"\",\"email\":\"mohit@mohitrajdeo.in\",\"github_username\":\"\",\"name\":\"Mohit Raj Deo\",\"role\":\"developer\"}}\n",
+      "label": "account"
+    },
+    {
+      "endpoint": "/v1/tenants/branches?tenant=b7de0a5a-3e48-41eb-afc2-f62d5d4483b1",
+      "method": "GET",
+      "samples": 1,
+      "status": 200,
+      "latency_ms": {
+        "min": 22676.59,
+        "p50": 22676.59,
+        "p95": 22676.59,
+        "max": 22676.59
+      },
+      "response_excerpt": "[{\"branch_id\":\"mcp_br_1795442274448\",\"parent_branch_id\":\"main\",\"tenant_id\":\"b7de0a5a-3e48-41eb-afc2-f62d5d4483b1\",\"timeline_id\":180,\"target_lsn\":0,\"created_at\":\"2026-11-23T13:57:56.667594876Z\",\"expires_at\":\"0001-01-01T00:00:00Z\"},{\"branch_id\":\"mcp_br_1795491713462\",\"parent_branch_id\":\"main\",\"tenant_id\":\"b7de0a5a-3e48-41eb-afc2-f62d5d4483b1\",\"timeline_id\":240,\"target_lsn\":0,\"created_at\":\"2026-11-24T03:41:57.05809433Z\",\"expires_at\":\"0001-01-01T00:00:00Z\"},{\"branch_id\":\"mcp_br_1795473263163\",\"parent_branch_id\":\"main\",\"tenant_id\":\"b7de0a5a-3e48-41eb-afc2-f62d5d4483b1\",\"timeline_id\":229,\"target_lsn\":0,\"created_at\":\"2026-11-23T22:34:48.723262988Z\",\"expires_at\":\"0001-01-01T00:00:00Z\"},{\"branch_id\":\"mcp_br_1795491173714\",\"parent_branch_id\":\"main\",\"tenant_id\":\"b7de0a5a-3e48-41eb-afc2-f62d5d4483b1\",\"timeline_id\":238,\"target_lsn\":0,\"created_at\":\"2026-11-24T03:32:56.009855745Z\",\"expires_at\":\"0001-01-01T00:00:00Z\"},{\"branch_id\":\"br_iso_1795473112\",\"parent_branch_id\":\"main\",\"tenant_id\":\"b7de0a5a-3e48-41eb-afc2-f62d5d4483b1\",\"timeline_id\":228,\"target_lsn\":0,\"created_at\":\"2026-11-23T22:32:24.54836965Z\",\"expires_at\":\"0001-01-01T00:00:00Z\"},{\"branch_id\":\"mcp_br_1795447160119\",\"parent_branch_id\":\"main\",\"tenant_id\":\"b7de0a5a-3e48-41eb-afc2-f62d5d4483b1\",\"timeline_id\":190,\"target_lsn\":0,\"created_at\":\"2026-11-23T15:19:25.590168835Z\",\"expires_at\":\"0001-01-01T00:00:00Z\"},{\"branch_id\":\"br_iso_1795493160\",\"parent_branch_id\":\"main\",\"tenant_id\":\"b7de0a5a-3e48-41eb-afc2-f62d5d4483b1\",\"timeline_id\":244,\"target_lsn\":0,\"created_at\":\"2026-11-24T04:06:04.601524795Z\",\"expires_at\":\"0001-01-01T00:00:00Z\"},{\"branch_id\":\"mcp_br_1795465781577\",\"parent_branch_id\":\"main\",\"tenant_id\":\"b7de0a5a-3e48-41eb-afc2-f62d5d4483b1\",\"timeline_id\":209,\"target_lsn\":0,\"created_at\":\"2026-11-23T20:29:44.370592846Z\",\"expires_at\":\"0001-01-01T00:00:00Z\"},{\"branch_id\":\"mcp_br_1795491055505\",\"parent_branch_id\":\"main\",\"tenant_id\":\"b7de0a5a-3e48-41eb-afc2-f62d5d4483b1\",\"timeline_id\":237,\"target_lsn\":0,\"created_at\":\"2026-11-24T03:30:57.907820005Z\",\"expires_at\":\"0001-01-01T00:00:00Z\"},{\"branch_id\":\"mcp_br_1795469486585\",\"parent_branch_id\":\"main\",\"tenant_id\":\"b7de0a5a-3e48-41eb-afc2-f62d5d4483b1\",\"timeline_id\":221,\"target_lsn\":0,\"created_at\":\"2026-11-23T21:31:30.976513394Z\",\"expires_at\":\"0001-01-01T00:00:00Z\"},{\"branch_id\":\"test_br_1795470639\",\"parent_branch_id\":\"main\",\"tenant_id\":\"b7de0a5a-3e48-41eb-afc2-f62d5d4483b1\",\"timeline_id\":223,\"target_lsn\":0,\"created_at\":\"2026-11-23T21:51:36.247020987Z\",\"expires_at\":\"0001-01-01T00:00:00Z\"},{\"branch_id\":\"mcp_br_1795442220195\",\"parent_branch_id\":\"main\",\"tenant_id\":\"b7de0a5a-3e48-41eb-afc2-f62d5d4483b1\",\"timeline_id\":179,\"target_lsn\":0,\"created_at\":\"2026-11-23T13:57:02.453144488Z\",\"expires_at\":\"0001-01-01T00:00:00Z\"},{\"branch_id\":\"mcp_br_1795436654344\",\"parent_branch_id\":\"main\",\"tenant_id\":\"b7de0a5a-3e48-41eb-afc2-f62d5d4483b1\",\"timeline_id\":177,\"target_lsn\":0,\"created_at\":\"2026-11-23T12:24:16.865663827Z\",\"expires_at\":\"0001-01-01T00:00:00Z\"},{\"branch_id\":\"br_iso_1795466012\",\"parent_branch_id\":\"main\",\"tenant_id\":\"b7de0a5a-3e48-41eb-afc2-f62d5d4483b1\",\"timeline_id\":211,\"target_lsn\":0,\"created_at\":\"2026-11-23T20:33:56.757835288Z\",\"expires_at\":\"0001-01-01T00:00:00Z\"},{\"branch_id\":\"mcp_br_1795468096691\",\"parent_branch_id\":\"main\",\"tenant_id\":\"b7de0a5a-3e48-41eb-afc2-f62d5d4483b1\",\"timeline_id\":217,\"target_lsn\":0,\"created_at\":\"2026-11-23T21:08:20.154574424Z\",\"expires_at\":\"0001-01-01T00:00:00Z\"},{\"branch_id\":\"mcp_br_1795469254815\",\"parent_branch_id\":\"main\",\"tenant_id\":\"b7de0a5a-3e48-41eb-afc2-f62d5d4483b1\",\"timeline_id\":219,\"target_lsn\":0,\"created_at\":\"2026-11-23T21:27:37.865371106Z\",\"expires_at\":\"0001-01-01T00:00:00Z\"},{\"branch_id\":\"br_iso_1795472621\",\"parent_branch_id\":\"main\",\"tenant_id\":\"b7de0a5a-3e48-41eb-afc2-f62d5d4483b1\",\"timeline_id\":227,\"target_lsn\":0,\"created_at\":\"2026-11-23T22:24:51.789448966Z\",\"expires_at\":\"0001-01-01T00:00:00Z\"},{\"branch_id\":\"mcp_br_1795443753259\",\"parent_branch_id\":\"main\",\"tenant_id\":\"b7de0a5a-3e48-41eb-afc2-f62d5d4483b1\",\"timeline",
+      "label": "branch inventory"
+    },
+    {
+      "endpoint": "/v1/status",
+      "method": "GET",
+      "samples": 1,
+      "status": 200,
+      "latency_ms": {
+        "min": 36578.97,
+        "p50": 36578.97,
+        "p95": 36578.97,
+        "max": 36578.97
+      },
+      "response_excerpt": "[{\"tenant_id\":\"816e49ff-ed53-4f48-be59-6a0e99edfa62\",\"state\":\"PAUSED\",\"port\":16056,\"pid\":292187,\"wake_count\":0,\"active_conns\":0,\"last_active\":\"2026-11-24T03:09:21Z\",\"cgroup_path\":\"/sys/fs/cgroup/mnemon/816e49ff-ed53-4f48-be59-6a0e99edfa62\",\"cgroups\":{\"frozen\":true,\"state\":\"PAUSED\",\"memory_bytes\":0,\"memory_peak_bytes\":0,\"memory_max_bytes\":0,\"cpu_usage_usec\":100096,\"pids_current\":0}},{\"tenant_id\":\"eschaton_b401_t1_3d4e0003\",\"state\":\"PAUSED\",\"port\":16154,\"pid\":455053,\"wake_count\":0,\"active_conns\":0,\"last_active\":\"2026-11-24T03:09:22Z\",\"cgroup_path\":\"/sys/fs/cgroup/mnemon/eschaton_b401_t1_3d4e0003\",\"cgroups\":{\"frozen\":true,\"state\":\"PAUSED\",\"memory_bytes\":0,\"memory_peak_bytes\":0,\"memory_max_bytes\":0,\"cpu_usage_usec\":44296,\"pids_current\":0}},{\"tenant_id\":\"mcp_br_1795446391559\",\"state\":\"PAUSED\",\"port\":16232,\"pid\":2573973,\"wake_count\":0,\"active_conns\":0,\"last_active\":\"2026-11-24T03:09:23Z\",\"cgroup_path\":\"/sys/fs/cgroup/mnemon/mcp_br_1795446391559\",\"cgroups\":{\"frozen\":true,\"state\":\"PAUSED\",\"memory_bytes\":18333696,\"memory_peak_bytes\":34623488,\"memory_max_bytes\":536870912,\"cpu_usage_usec\":234567,\"pids_current\":0}},{\"tenant_id\":\"test-db-001\",\"state\":\"PAUSED\",\"port\":16014,\"pid\":114223,\"wake_count\":0,\"active_conns\":0,\"last_active\":\"2026-11-24T03:09:24Z\",\"cgroup_path\":\"/sys/fs/cgroup/mnemon/test-db-001\",\"cgroups\":{\"frozen\":true,\"state\":\"PAUSED\",\"memory_bytes\":0,\"memory_peak_bytes\":0,\"memory_max_bytes\":0,\"cpu_usage_usec\":37679,\"pids_current\":0}},{\"tenant_id\":\"c164dc62-d179-446b-8903-dabdd9ca008e\",\"state\":\"PAUSED\",\"port\":16033,\"pid\":232489,\"wake_count\":0,\"active_conns\":0,\"last_active\":\"2026-11-24T03:09:22Z\",\"cgroup_path\":\"/sys/fs/cgroup/mnemon/c164dc62-d179-446b-8903-dabdd9ca008e\",\"cgroups\":{\"frozen\":true,\"state\":\"PAUSED\",\"memory_bytes\":0,\"memory_peak_bytes\":0,\"memory_max_bytes\":0,\"cpu_usage_usec\":1092381,\"pids_current\":0}},{\"tenant_id\":\"mcp_br_1795442274448\",\"state\":\"PAUSED\",\"port\":16232,\"pid\":2514159,\"wake_count\":0,\"active_conns\":0,\"last_active\":\"2026-11-24T03:09:23Z\",\"cgroup_path\":\"/sys/fs/cgroup/mnemon/mcp_br_1795442274448\",\"cgroups\":{\"frozen\":true,\"state\":\"PAUSED\",\"memory_bytes\":15327232,\"memory_peak_bytes\":35594240,\"memory_max_bytes\":536870912,\"cpu_usage_usec\":70598,\"pids_current\":0}},{\"tenant_id\":\"tenant_web_1794774958\",\"state\":\"PAUSED\",\"port\":16011,\"pid\":101171,\"wake_count\":0,\"active_conns\":0,\"last_active\":\"2026-11-24T03:09:24Z\",\"cgroup_path\":\"/sys/fs/cgroup/mnemon/tenant_web_1794774958\",\"cgroups\":{\"frozen\":true,\"state\":\"PAUSED\",\"memory_bytes\":0,\"memory_peak_bytes\":0,\"memory_max_bytes\":0,\"cpu_usage_usec\":98466,\"pids_current\":0}},{\"tenant_id\":\"ts_br_1795432325700\",\"state\":\"PAUSED\",\"port\":16008,\"pid\":2382155,\"wake_count\":0,\"active_conns\":0,\"last_active\":\"2026-11-24T03:09:25Z\",\"cgroup_path\":\"/sys/fs/cgroup/mnemon/ts_br_1795432325700\",\"cgroups\":{\"frozen\":true,\"state\":\"PAUSED\",\"memory_bytes\":15331328,\"memory_peak_bytes\":30449664,\"memory_max_bytes\":536870912,\"cpu_usage_usec\":65820,\"pids_current\":0}},{\"tenant_id\":\"br_iso_1795466012\",\"state\":\"PAUSED\",\"port\":16232,\"pid\":0,\"wake_count\":1,\"active_conns\":0,\"last_active\":\"2026-11-24T03:54:42Z\",\"cgroup_path\":\"/sys/fs/cgroup/mnemon/br_iso_1795466012\",\"cgroups\":{\"frozen\":true,\"state\":\"PAUSED\",\"memory_bytes\":4096,\"memory_peak_bytes\":36470784,\"memory_max_bytes\":536870912,\"cpu_usage_usec\":58063,\"pids_current\":0}},{\"tenant_id\":\"eschaton_b401_t1_c6ee000d\",\"state\":\"PAUSED\",\"port\":16071,\"pid\":3128348,\"wake_count\":0,\"active_conns\":0,\"last_active\":\"2026-11-24T03:09:22Z\",\"cgroup_path\":\"/sys/fs/cgroup/mnemon/eschaton_b401_t1_c6ee000d\",\"cgroups\":{\"frozen\":true,\"state\":\"PAUSED\",\"memory_bytes\":0,\"memory_peak_bytes\":0,\"memory_max_bytes\":0,\"cpu_usage_usec\":66188,\"pids_current\":0}},{\"tenant_id\":\"eschaton_b402_t1_401c000b\",\"state\":\"PAUSED\",\"port\":16071,\"pid\":2726412,\"wake_count\":0,\"active_conns\":0,\"last_active\":\"2026-11-24T03:09:22Z\",\"cgroup_path\":\"/sys/fs/cgroup/mnemon/eschaton_b402_t1_401c000b\",\"cgroups\":{\"frozen\":true,\"state\":\"PAUSED\",\"memory_bytes\":0,\"memory_peak_bytes\":0,\"memory_max_bytes\":0,\"cpu_usage_usec\":55539",
+      "label": "tenant telemetry"
+    },
+    {
+      "endpoint": "/v1/databases/b7de0a5a-3e48-41eb-afc2-f62d5d4483b1/sql",
+      "method": "POST",
+      "samples": 1,
+      "status": 200,
+      "latency_ms": {
+        "min": 12054.39,
+        "p50": 12054.39,
+        "p95": 12054.39,
+        "max": 12054.39
+      },
+      "response_excerpt": "{\"branch_id\":\"b7de0a5a-3e48-41eb-afc2-f62d5d4483b1\",\"columns\":[\"probe\"],\"duration_ms\":862.257,\"executed_at\":\"2026-11-24T04:30:43Z\",\"output\":\"probe\\n----------------------------------------\\n1\\n(1 rows)\\n\",\"project_id\":\"b7de0a5a-3e48-41eb-afc2-f62d5d4483b1\",\"query_id\":\"qry_1795494643792052714\",\"row_count\":1,\"rows\":[{\"probe\":1}],\"rows_affected\":1,\"server_limit\":1000,\"status\":\"success\",\"tenant_id\":\"b7de0a5a-3e48-41eb-afc2-f62d5d4483b1\",\"truncated\":false}\n",
+      "label": "sql select 1"
+    }
+  ]
+}
