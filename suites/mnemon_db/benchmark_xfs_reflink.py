@@ -15,10 +15,11 @@ def main():
     print(" MNEMON-DB: ZERO-COPY POSTGRESQL 16 REFLINK BRANCH BENCHMARK")
     print("=" * 70)
 
-    test_file = "/tmp/mnemon_reflink_source.bin"
-    clone_file = "/tmp/mnemon_reflink_clone.bin"
+    target_dir = "/var/lib/mnemon" if os.path.exists("/var/lib/mnemon") and os.access("/var/lib/mnemon", os.W_OK) else "/tmp"
+    test_file = os.path.join(target_dir, "mnemon_reflink_source.bin")
+    clone_file = os.path.join(target_dir, "mnemon_reflink_clone.bin")
 
-    print("Generating 100MB database cluster block template...")
+    print(f"Generating 100MB database cluster block template in {target_dir}...")
     with open(test_file, "wb") as f:
         f.write(b"\0" * (100 * 1024 * 1024))
 
