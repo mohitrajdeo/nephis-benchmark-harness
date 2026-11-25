@@ -5,7 +5,18 @@ import urllib.request
 import urllib.error
 import time
 import sys
+import os
+import ssl
+from pathlib import Path
 import argparse
+
+def _get_ssl_context():
+    ca_env = os.environ.get("NEPHIS_CA_BUNDLE")
+    default_bundle = Path(__file__).resolve().parents[2] / "configs" / "tls" / "nephis-ca-bundle.pem"
+    ca_path = ca_env or (str(default_bundle) if default_bundle.exists() else None)
+    if ca_path and os.path.exists(ca_path):
+        return ssl.create_default_context(cafile=ca_path)
+    return ssl.create_default_context()
 
 CPP_CODE = """#include <iostream>
 int main() {
@@ -34,8 +45,9 @@ def solve_py(n):
 
 def main():
     parser = argparse.ArgumentParser(description="Eschaton 100 Test Cases Benchmark")
+    default_token = os.environ.get("NEPHIS_API_KEY") or os.environ.get("ESCHATON_TOKEN") or "mrd_live_63bb486dd0718806c08fb3ec9428cbd9dc8e7e88e20073f1"
     parser.add_argument("--url", default="https://nephis.theeducode.com/v1", help="Eschaton URL")
-    parser.add_argument("--token", default="esk_live_demo10k", help="API token")
+    parser.add_argument("--token", default=default_token, help="API token")
     parser.add_argument("--count", type=int, default=50, help="Testcase count")
     parser.add_argument("--suite", default=None, help="Execution suite: Apex (<=30) or Void (>30)")
     args = parser.parse_args()
@@ -68,7 +80,7 @@ def main():
     t0 = time.perf_counter()
     try:
         req = urllib.request.Request(url, data=payload, headers=headers)
-        with urllib.request.urlopen(req, timeout=180.0) as resp:
+        with urllib.request.urlopen(req, timeout=180.0, context=_get_ssl_context()) as resp:
             data = json.loads(resp.read().decode("utf-8"))
             dur_ms = (time.perf_counter() - t0) * 1000.0
             

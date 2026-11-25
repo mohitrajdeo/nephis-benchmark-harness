@@ -3,6 +3,17 @@
 import urllib.request
 import time
 import argparse
+import os
+import ssl
+from pathlib import Path
+
+def _get_ssl_context():
+    ca_env = os.environ.get("NEPHIS_CA_BUNDLE")
+    default_bundle = Path(__file__).resolve().parents[2] / "configs" / "tls" / "nephis-ca-bundle.pem"
+    ca_path = ca_env or (str(default_bundle) if default_bundle.exists() else None)
+    if ca_path and os.path.exists(ca_path):
+        return ssl.create_default_context(cafile=ca_path)
+    return ssl.create_default_context()
 
 def main():
     parser = argparse.ArgumentParser()
@@ -15,7 +26,7 @@ def main():
     for _ in range(args.count):
         t0 = time.perf_counter()
         try:
-            with urllib.request.urlopen(args.url, timeout=5.0) as resp:
+            with urllib.request.urlopen(args.url, timeout=5.0, context=_get_ssl_context()) as resp:
                 resp.read()
                 latencies.append((time.perf_counter() - t0) * 1000.0)
         except Exception:
